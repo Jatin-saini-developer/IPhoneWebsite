@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+body{
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+
+}
+
+.card-container::-webkit-scrollbar {
+  display: none;
+}
+
+.card-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
