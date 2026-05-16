@@ -1,6 +1,28 @@
+import { useState } from "react";
 import "./App.css";
+import Camera from "./components/Camera";
+import ChipBattery from "./components/ChipBattery";
+import IOSIntelligence from "./components/IOSIntelligence";
+import Environment from "./components/Environment";
+import Privacy from "./components/Privacy";
+import PeaceOfMind from "./components/PeaceOfMind";
+import Innovation from "./components/Innovation";
 
 function App() {
+  const [activeModal, setActiveModal] = useState(null);
+
+  const modalComponents = {
+    innovation: Innovation,
+    camera: Camera,
+    chipBattery: ChipBattery,
+    iosIntelligence: IOSIntelligence,
+    environment: Environment,
+    peaceOfMind: PeaceOfMind,
+    privacy: Privacy,
+  };
+
+  const ActiveComponent = modalComponents[activeModal];
+
   return (
     <>
       <div className="w-full  mt-10">
@@ -10,11 +32,13 @@ function App() {
           </h1>
         </div>
 
-        <div
-          className="card-container mt-8 relative flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth py-4   pl-[max(1rem,calc((100vw-72rem)/2+1rem))]
-  scroll-pl-[max(1rem,calc((100vw-72rem)/2+1rem))]"
-        >
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+        <div className="card-container mt-8 relative flex gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth py-4   pl-[max(1rem,calc((100vw-72rem)/2+1rem))] scroll-pl-[max(1rem,calc((100vw-72rem)/2+1rem))]">
+          <button
+            onClick={() => {
+              setActiveModal("innovation");
+            }}
+            className="card w-110 h-200 flex items-start justify-items-start text-left relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/v/iphone/home/cj/images/overview/consider/innovation__fmir5mp9zpay_large.jpg"
               alt=""
@@ -28,16 +52,21 @@ function App() {
             </div>
             <div className="absolute bottom-5 right-5 z-20 bg-white rounded-full p-2">
               <svg
-                className="w-6 h-6 fill-black"
+                className="w-6 h-6 fill-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 36 36"
               >
                 <path d="m24 16.5h-4.5v-4.5c0-.8286-.6719-1.5-1.5-1.5s-1.5.6714-1.5 1.5v4.5h-4.5c-.8281 0-1.5.6714-1.5 1.5s.6719 1.5 1.5 1.5h4.5v4.5c0 .8286.6719 1.5 1.5 1.5s1.5-.6714 1.5-1.5v-4.5h4.5c.8281 0 1.5-.6714 1.5-1.5s-.6719-1.5-1.5-1.5z"></path>
               </svg>
             </div>
-          </div>
+          </button>
 
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+          <div
+            onClick={() => {
+              setActiveModal("camera");
+            }}
+            className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/v/iphone/home/cj/images/overview/consider/camera__dez4cvpw83sm_large_2x.jpg"
               alt=""
@@ -62,7 +91,12 @@ function App() {
             </div>
           </div>
 
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+          <div
+            onClick={() => {
+              setActiveModal("chipBattery");
+            }}
+            className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/v/iphone/home/cj/images/overview/consider/chip__fh5j5on49p2e_large.jpg"
               alt=""
@@ -78,7 +112,7 @@ function App() {
             </div>
             <div className="absolute bottom-5 right-5 z-20 bg-white rounded-full p-2">
               <svg
-                className="w-6 h-6 fill-black"
+                className="w-6 h-6 fill-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 36 36"
               >
@@ -87,7 +121,12 @@ function App() {
             </div>
           </div>
 
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+          <div
+            onClick={() => {
+              setActiveModal("iosIntelligence");
+            }}
+            className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/in/iphone/home/images/overview/consider/ios__8z58j1o80yqi_large.jpg"
               alt=""
@@ -103,7 +142,7 @@ function App() {
             </div>
             <div className="absolute bottom-5 right-5 z-20 bg-white rounded-full p-2">
               <svg
-                className="w-6 h-6 fill-black"
+                className="w-6 h-6 fill-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 36 36"
               >
@@ -112,7 +151,12 @@ function App() {
             </div>
           </div>
 
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+          <div
+            onClick={() => {
+              setActiveModal("environment");
+            }}
+            className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/v/iphone/home/cj/images/overview/consider/environment__c8tpot4ti2qa_large.jpg"
               alt=""
@@ -126,7 +170,7 @@ function App() {
             </div>
             <div className="absolute bottom-5 right-5 z-20 bg-white rounded-full p-2">
               <svg
-                className="w-6 h-6 fill-black"
+                className="w-6 h-6 fill-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 36 36"
               >
@@ -135,7 +179,12 @@ function App() {
             </div>
           </div>
 
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+          <div
+            onClick={() => {
+              setActiveModal("privacy");
+            }}
+            className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/v/iphone/home/cj/images/overview/consider/privacy__cv4ztv5gebyq_large.jpg"
               alt=""
@@ -149,7 +198,7 @@ function App() {
             </div>
             <div className="absolute bottom-5 right-5 z-20 bg-white rounded-full p-2">
               <svg
-                className="w-6 h-6 fill-black"
+                className="w-6 h-6 fill-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 36 36"
               >
@@ -158,7 +207,12 @@ function App() {
             </div>
           </div>
 
-          <div className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1">
+          <div
+            onClick={() => {
+              setActiveModal("peaceOfMind");
+            }}
+            className="card w-110 h-200 relative rounded-2xl overflow-hidden shrink-0 snap-start  transition-all duration-500 ease-out hover:scale-[1.02] hover:-translate-y-1"
+          >
             <img
               src="https://www.apple.com/in/iphone/home/images/overview/consider/safety__grtwyqpan8yi_large.jpg"
               alt=""
@@ -172,7 +226,7 @@ function App() {
             </div>
             <div className="absolute bottom-5 right-5 z-20 bg-white rounded-full p-2">
               <svg
-                className="w-6 h-6 fill-black"
+                className="w-6 h-6 fill-black cursor-pointer"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 36 36"
               >
@@ -182,6 +236,8 @@ function App() {
           </div>
         </div>
       </div>
+
+      {ActiveComponent && <ActiveComponent setActiveModal={setActiveModal} />}
     </>
   );
 }
